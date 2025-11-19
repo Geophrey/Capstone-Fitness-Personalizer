@@ -1,6 +1,7 @@
 import express from "express";
 import "dotenv/config";
 import cors from "cors"
+import databaseConnect from "./database.js";
 
 const app = express();
 
@@ -15,4 +16,5 @@ app.get(`/`, (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
+    databaseConnect()
 });
