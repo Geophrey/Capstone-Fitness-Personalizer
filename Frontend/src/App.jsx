@@ -4,17 +4,22 @@ function App() {
     useEffect(() => {
         async function serverTest() {
             try {
-                const response = await fetch("http://localhost:7777/");
+                const response1 = await fetch("http://localhost:7777/");
+                const result1 = await response1.json();
 
-                const result = await response.json();
+                const response2 = await fetch(
+                    "http://localhost:7777/exercises"
+                );
+                const result2 = await response2.json();
 
-                console.log(result);
+                console.log(result1);
+                console.log(result2);
             } catch (error) {
                 console.error("error found: " + error);
             }
         }
 
-        serverTest()
+        serverTest();
     });
 
     return <></>;
