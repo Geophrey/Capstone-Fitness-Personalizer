@@ -25,7 +25,7 @@ const exerciseSchema = mongoose.Schema({
     },
     additionalNotes: {
         type: String,
-        required: true,
+        required: false,
     },
     //could change to an array of objects to hold multiple images and a short description of what it is if time permits
     imageURL: { type: String, required: false },
