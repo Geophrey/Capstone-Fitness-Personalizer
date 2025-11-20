@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import mockData from "../../Backend/data/exerciseMockData";
+import data from "../../Backend/data/exerciseData";
 
 const tempDivStyle = {
     border: "2px solid black",
@@ -11,8 +12,8 @@ const tempDivStyle = {
 const tempFormStyle = { display: "flex", flexDirection: "column" };
 
 function App() {
-    const [exercises, setExercises] = useState(mockData);
-    const [testState, setTestState] = useState()
+    const [exercises, setExercises] = useState(data);
+    const [testState, setTestState] = useState();
 
     useEffect(() => {
         async function getAllExercises() {
@@ -38,14 +39,16 @@ function App() {
         // console.log(exercises)
     }
 
-
     function handleClick(e) {
-        setTestState(exercises.map((exercise) => (
-                        <div key={exercise.id}>
-                            <h4>{exercise.name}</h4>
-                            <p>{exercise.description}</p>
-                        </div>
-                    )))
+        setTestState(
+            exercises.map((exercise) => (
+                <div key={exercise.name}>
+                    <h2>{exercise.name}</h2>
+                    <h3>Main Type of Training: "{exercise.trainingType[0]}"</h3>
+                    <h4>Basic How-To: "{exercise.tutorial}"</h4>
+                </div>
+            ))
+        );
     }
 
     return (
@@ -64,7 +67,7 @@ function App() {
                     {console.log(testState)}
                     {/* {exercises.map((exercise) => (
                         <div key={exercise.id}>
-                            <h4>{exercise.name}</h4>
+                            <h2>{exercise.name}</h2>
                             <p>{exercise.description}</p>
                         </div>
                     ))} */}
