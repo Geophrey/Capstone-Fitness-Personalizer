@@ -1,11 +1,57 @@
-import { tempDivStyle, tempFormStyle } from "../styles/testStyles"
+import { tempDivStyle, tempFormStyle } from "../styles/testStyles";
+import { useRef } from "react";
 
 export default function AddOneExerciseForm() {
-    <form onSubmit={handleSubmit} style={tempFormStyle}>
-                        <input ref={exerciseName} type="text" required={true} />
-                        <input type="text" required={true} />
-                        <input type="text" required={true} />
-                        <input type="number" required={true} />
-                        <button onClick={handleTest}>Click To Submit</button>
-                    </form>
+    const oneNewExercise = useRef();
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        let formData = new FormData(oneNewExercise.current);
+        let useableData = Object.fromEntries(formData.entries());
+        console.log(useableData);
+
+        const newExercise = {
+            name: useableData.name,
+            trainingType: [useableData.type],
+            tutorial: useableData.tutorial,
+            measurementUnits: [useableData.unit],
+            intensity: parseInt(useableData.intensity),
+        };
+
+        console.log(newExercise);
+
+        try {
+            console.log(newExercise);
+            const response = await fetch(`http://localhost:7777/addExercises`, {
+                method: "POST",
+                body: JSON.stringify(newExercise),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await response.json();
+
+            console.log(result);
+
+            // setExercises([...exercises, result]);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    return (
+        <form
+            onSubmit={handleSubmit}
+            ref={oneNewExercise}
+            style={tempFormStyle}
+        >
+            <input type="text" name="name" required={true} />
+            <input type="text" name="type" required={true} />
+            <input type="text" name="tutorial" required={true} />
+            <input type="text" name="unit" required={true} />
+            <input type="number" name="intensity" required={true} />
+            <input type="text" name="notes" required={false} />
+            <input type="url" name="image" required={false} />
+            <button>Click To Submit</button>
+        </form>
+    );
 }

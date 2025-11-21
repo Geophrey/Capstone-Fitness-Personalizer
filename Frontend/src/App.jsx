@@ -8,7 +8,7 @@ import { tempDivStyle, tempFormStyle } from "./styles/testStyles";
 function App() {
     // const [exercises, setExercises] = useState(data);
     const [exercises, setExercises] = useState(data);
-    const exerciseName = useRef();
+    // const oneNewExercise = useRef();
     const [testState, setTestState] = useState();
 
     // useEffect(() => {
@@ -28,45 +28,44 @@ function App() {
     //     getAllExercises();
     // }, []);
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        // console.dir(e.target)
-        let test = new FormData(exerciseName.current);
-        let realTest = Object.fromEntries(test.entries());
-        console.log(realTest);
-        // console.log(test);
+    // async function handleSubmit(e) {
+    //     e.preventDefault();
+    //     // console.dir(e.target)
+    //     let formData = new FormData(oneNewExercise.current);
+    //     let useableData = Object.fromEntries(formData.entries());
+    //     console.log(useableData);
+    //     // console.log(test);
 
-        const newExercise = {
-            name: realTest.name,
-            trainingType: [realTest.type],
-            tutorial:
-                realTest.tutorial,
-            measurementUnits: [realTest.unit],
-            intensity: parseInt(realTest.intensity),
-        };
+    //     const newExercise = {
+    //         name: useableData.name,
+    //         trainingType: [useableData.type],
+    //         tutorial: useableData.tutorial,
+    //         measurementUnits: [useableData.unit],
+    //         intensity: parseInt(useableData.intensity),
+    //     };
 
-        console.log(newExercise)
-        // setExercises(mockData)
-        // console.log(exercises)
+    //     console.log(newExercise);
+    //     // setExercises(mockData)
+    //     // console.log(exercises)
 
-        try {
-            console.log(newExercise);
-            const response = await fetch(`http://localhost:7777/addExercises`, {
-                method: "POST",
-                body: JSON.stringify(newExercise),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-            const result = await response.json();
+    //     try {
+    //         console.log(newExercise);
+    //         const response = await fetch(`http://localhost:7777/addExercises`, {
+    //             method: "POST",
+    //             body: JSON.stringify(newExercise),
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //         });
+    //         const result = await response.json();
 
-            console.log(result);
+    //         console.log(result);
 
-            setExercises([...exercises, result]);
-        } catch (e) {
-            console.error(e);
-        }
-    }
+    //         setExercises([...exercises, result]);
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 
     async function addAllExercises(e) {
         e.preventDefault();
@@ -109,9 +108,9 @@ function App() {
     return (
         <>
             <div style={tempDivStyle}>
-                <form
+                {/* <form
                     onSubmit={handleSubmit}
-                    ref={exerciseName}
+                    ref={oneNewExercise}
                     style={tempFormStyle}
                 >
                     <input type="text" name="name" required={true} />
@@ -120,8 +119,10 @@ function App() {
                     <input type="text" name="unit" required={true} />
                     <input type="number" name="intensity" required={true} />
                     <button onClick={handleTest}>Click To Submit</button>
-                </form>
-                {/* <AddOneExerciseForm/> */}
+                </form> */}
+                <button>tesetestest</button>
+                {/* {console.log(handleSubmit)} */}
+                <AddOneExerciseForm/>
                 <button onClick={addAllExercises}>
                     Click to Add All Exercises to Database
                 </button>
