@@ -9,7 +9,7 @@ power: "Power",
 mobility: "Mobility",
 speed: "Speed",
 warmUp: "Warm-Up",
-other: "" //maybe an array to add for the user to add other options
+other: "other" //maybe an array to add for the user to add other options
 }
 
 export default type

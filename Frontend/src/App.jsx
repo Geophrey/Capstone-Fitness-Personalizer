@@ -1,14 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import mockData from "../../Backend/data/exerciseMockData";
 import data from "../../Backend/data/exerciseData";
-
-const tempDivStyle = {
-    border: "2px solid black",
-    width: "fit-content",
-    height: "fit-content",
-};
-
-const tempFormStyle = { display: "flex", flexDirection: "column" };
+import type from "../../Backend/data/trainingTypes";
+import AddOneExerciseForm from "./components/AddOneExerciseForm";
+import { tempDivStyle, tempFormStyle } from "./styles/testStyles";
 
 function App() {
     // const [exercises, setExercises] = useState(data);
@@ -35,11 +30,22 @@ function App() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(exerciseName.current.value);
+        // console.dir(e.target)
+        let test = new FormData(exerciseName.current);
+        let realTest = Object.fromEntries(test.entries());
+        console.log(realTest);
+        // console.log(test);
 
         const newExercise = {
-            name: exerciseName.current.value,
+            name: realTest.name,
+            trainingType: [realTest.type],
+            tutorial:
+                realTest.tutorial,
+            measurementUnits: [realTest.unit],
+            intensity: parseInt(realTest.intensity),
         };
+
+        console.log(newExercise)
         // setExercises(mockData)
         // console.log(exercises)
 
@@ -67,10 +73,10 @@ function App() {
         // console.log(`Previous exercises state: ${exercises}`);
         // setExercises(data)
         // console.log(data)
-        console.log(`Adding exercise data to database...`)
+        console.log(`Adding exercise data to database...`);
 
         try {
-            console.log(exercises)
+            console.log(exercises);
             const response = await fetch(`http://localhost:7777/addExercises`, {
                 method: "POST",
                 body: JSON.stringify(exercises),
@@ -103,15 +109,22 @@ function App() {
     return (
         <>
             <div style={tempDivStyle}>
-                <form onSubmit={handleSubmit} style={tempFormStyle}>
-                    <input ref={exerciseName} type="text" required={true} />
-                    {/* <input type="text" required={true} />
-                    <input type="text" required={true} />
-                    <input type="text" required={true} />
-                    <input type="number" required={true} /> */}
+                <form
+                    onSubmit={handleSubmit}
+                    ref={exerciseName}
+                    style={tempFormStyle}
+                >
+                    <input type="text" name="name" required={true} />
+                    <input type="text" name="type" required={true} />
+                    <input type="text" name="tutorial" required={true} />
+                    <input type="text" name="unit" required={true} />
+                    <input type="number" name="intensity" required={true} />
                     <button onClick={handleTest}>Click To Submit</button>
                 </form>
-                <button onClick={addAllExercises}>Click to Add All Exercises to Database</button>
+                {/* <AddOneExerciseForm/> */}
+                <button onClick={addAllExercises}>
+                    Click to Add All Exercises to Database
+                </button>
                 <div style={tempDivStyle}>
                     {/* {testState}
                     {console.log(testState)} */}
