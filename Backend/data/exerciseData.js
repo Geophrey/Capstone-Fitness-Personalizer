@@ -76,3 +76,12 @@ export default data;
 //         "measurementUnits": ["Distance"],
 //         "intensity": 9,
 //     }
+
+// {
+//         "name": "chest press",
+//         "trainingType": ["Muscle Growth", "Endurance", "Strength"],
+//         "tutorial":
+//             "With hands in front of you and aligned with your chest, push forwards by moving them away from your body",
+//         "measurementUnits": ["Repetitions"],
+//         "intensity": 6
+//     }

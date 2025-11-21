@@ -3,43 +3,43 @@ import mongoose from "mongoose";
 const exerciseSchema = mongoose.Schema({
     name: {
         type: String,
-        required: false,
-        // lowercase: true,
+        required: true,
+        lowercase: true,
     },
     trainingType: {
         type: [String],
-        required: false,
+        required: true,
         default: ["test"], //delete this when testing works
 
-        //custom data validator to make sure the training type array only stores a maximum of 3 values
-        // validate: {
-        //     validator: function (v) {
-        //         return !v || v.length <= 3;
-        //     },
-        // },
-        // message: (props) =>
-        //     `trainingType has ${props.value.length} elements attempting to be passed but the maximum is 3`,
+        // custom data validator to make sure the training type array only stores a maximum of 3 values
+        validate: {
+            validator: function (v) {
+                return !v || v.length <= 3;
+            },
+        },
+        message: (props) =>
+            `trainingType has ${props.value.length} elements attempting to be passed but the maximum is 3`,
     },
     tutorial: {
         type: String,
         default: null, //delete this when testing works
-        required: false,
+        required: true,
     },
     measurementUnits: {
         type: [String],
         default: ["test"], //delete this when testing works
-        // validate: {
-        //     validator: (v) => Array.isArray(v) && v.length > 0,
-        //     message:
-        //         "measurementUnits must be an array and must contain at least one item",
-        // },
+        validate: {
+            validator: (v) => Array.isArray(v) && v.length > 0,
+            message:
+                "measurementUnits must be an array and must contain at least one item",
+        },
 
-        required: false,
+        required: true,
     },
     intensity: {
         type: Number,
         default: null, //delete this when testing works
-        required: false,
+        required: true,
     },
     notes: {
         type: String,
