@@ -9,6 +9,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 app.use(cors());
+app.use(express.json())
 
 //http://localhost:7777/
 app.get(`/`, (req, res) => {
@@ -18,13 +19,13 @@ app.get(`/`, (req, res) => {
 //http://localhost:7777/addExercises
 app.post(`/addExercises`, async (req, res) => {
     try {
-        await Exercise.insertOne(req.body);
+        const newExercise = await Exercise.insertOne(req.body);
         console.log("Basic exercise data has been added to the database");
+        console.log(req.body)
 
         const exercises = await Exercise.find({});
         res.status(200).json(exercises);
     } catch (e) {
-        console.log(e);
         console.error(e);
         res.status(400).json({ error: e.message });
     }

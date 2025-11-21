@@ -4,7 +4,7 @@ const exerciseSchema = mongoose.Schema({
     name: {
         type: String,
         required: false,
-        lowercase: true,
+        // lowercase: true,
     },
     trainingType: {
         type: [String],
