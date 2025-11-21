@@ -12,7 +12,7 @@ const tempFormStyle = { display: "flex", flexDirection: "column" };
 
 function App() {
     // const [exercises, setExercises] = useState(data);
-    const [exercises, setExercises] = useState([]);
+    const [exercises, setExercises] = useState(data);
     const exerciseName = useRef();
     const [testState, setTestState] = useState();
 
@@ -44,19 +44,45 @@ function App() {
         // console.log(exercises)
 
         try {
-            console.log(newExercise)
+            console.log(newExercise);
             const response = await fetch(`http://localhost:7777/addExercises`, {
                 method: "POST",
                 body: JSON.stringify(newExercise),
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
                 },
             });
             const result = await response.json();
 
-            console.log(result)
+            console.log(result);
 
-            setExercises([...exercises, result])
+            setExercises([...exercises, result]);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async function addAllExercises(e) {
+        e.preventDefault();
+        // console.log(`Previous exercises state: ${exercises}`);
+        // setExercises(data)
+        // console.log(data)
+        console.log(`Adding exercise data to database...`)
+
+        try {
+            console.log(exercises)
+            const response = await fetch(`http://localhost:7777/addExercises`, {
+                method: "POST",
+                body: JSON.stringify(exercises),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await response.json();
+
+            console.log(result);
+
+            // setExercises([...exercises, result]);
         } catch (e) {
             console.error(e);
         }
@@ -85,6 +111,7 @@ function App() {
                     <input type="number" required={true} /> */}
                     <button onClick={handleTest}>Click To Submit</button>
                 </form>
+                <button onClick={addAllExercises}>Click to Add All Exercises to Database</button>
                 <div style={tempDivStyle}>
                     {/* {testState}
                     {console.log(testState)} */}

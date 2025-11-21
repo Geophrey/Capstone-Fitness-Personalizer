@@ -26,7 +26,7 @@ const data = [
         tutorial:
             "With feet aligned at hip width or somewhat wider, lower yourself by bending your knees and hips with a neutral spine (minimal spine bending) until you cant comfortably lower yourself anymore. Bring yourself back up by straightening your self through the knees and hips",
         measurementUnits: [unit.repetitions],
-        intensity: 6,
+        intensity: 6
     },
 
     {
@@ -35,7 +35,7 @@ const data = [
         tutorial:
             "Choose your style of swimming and complete the distance and/or times you've set for yourself in each set",
         measurementUnits: [unit.sets],
-        intensity: 6,
+        intensity: 6
     },
 
     {
@@ -44,7 +44,7 @@ const data = [
         tutorial:
             "spread your legs in a v-shape either standing or seated. Reach down or forwwards depending on if you are seated or not and hold. You can also reach to the sides towards your feet and hold.",
         measurementUnits: [unit.duration],
-        intensity: 1,
+        intensity: 1
     },
 
     {
@@ -53,7 +53,7 @@ const data = [
         tutorial:
             "For every step you take, plant a heel into the ground with that leg being straight and reach down towards and somewhat behind that heel to stretch your hamstrings, calves, and back",
         measurementUnits: [unit.repetitions],
-        intensity: 3,
+        intensity: 3
     },
 
     {
@@ -62,7 +62,7 @@ const data = [
         tutorial:
             "Set up a box or box-like object with a flat, elevated surface to jump on. Start with bth feet on the ground, bend your knees about half to a quarter of the way down and launch yourself up and forwards to land on the box with both feet fully on top",
         measurementUnits: [unit.repetitions],
-        intensity: 6,
+        intensity: 6
     },
 ];
 
