@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import mockData from "../../Backend/data/exerciseMockData";
 import data from "../../Backend/data/exerciseData";
 
@@ -12,59 +11,83 @@ const tempDivStyle = {
 const tempFormStyle = { display: "flex", flexDirection: "column" };
 
 function App() {
-    const [exercises, setExercises] = useState(data);
+    // const [exercises, setExercises] = useState(data);
+    const [exercises, setExercises] = useState([]);
+    const exerciseName = useRef();
     const [testState, setTestState] = useState();
 
-    useEffect(() => {
-        async function getAllExercises() {
-            try {
-                const response = await fetch("http://localhost:7777/exercises");
-                const data = await response.json();
+    // useEffect(() => {
+    //     async function getAllExercises() {
+    //         try {
+    //             const response = await fetch("http://localhost:7777/exercises");
+    //             const data = await response.json();
 
-                console.log(data);
-                // setExercises(data);
-                console.log(exercises);
-            } catch (error) {
-                console.error("error found: " + error);
-            }
-        }
+    //             console.log(data);
+    //             // setExercises(data);
+    //             console.log(exercises);
+    //         } catch (error) {
+    //             console.error("error found: " + error);
+    //         }
+    //     }
 
-        getAllExercises();
-    }, []);
+    //     getAllExercises();
+    // }, []);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        console.log("no refresh");
+        console.log(exerciseName.current.value);
+
+        const newExercise = {
+            name: exerciseName.current.value,
+        };
         // setExercises(mockData)
         // console.log(exercises)
+
+        try {
+            console.log(newExercise)
+            const response = await fetch(`http://localhost:7777/addExercises`, {
+                method: "POST",
+                body: JSON.stringify(newExercise),
+                headers: {
+                    "Content-Type": "application/json"
+                },
+            });
+            const result = await response.json();
+
+            console.log(result)
+
+            setExercises([...exercises, result])
+        } catch (e) {
+            console.error(e);
+        }
     }
 
-    function handleClick(e) {
-        setTestState(
-            exercises.map((exercise) => (
-                <div key={exercise.name}>
-                    <h2>{exercise.name}</h2>
-                    <h3>Main Type of Training: "{exercise.trainingType[0]}"</h3>
-                    <h4>Basic How-To: "{exercise.tutorial}"</h4>
-                </div>
-            ))
-        );
+    function handleTest(e) {
+        // setTestState(
+        //     exercises.map((exercise) => (
+        //         <div key={exercise.name}>
+        //             <h2>{exercise.name}</h2>
+        //             <h3>Main Type of Training: "{exercise.trainingType[0]}"</h3>
+        //             <h4>Basic How-To: "{exercise.tutorial}"</h4>
+        //         </div>
+        //     ))
+        // );
     }
 
     return (
         <>
             <div style={tempDivStyle}>
                 <form onSubmit={handleSubmit} style={tempFormStyle}>
+                    <input ref={exerciseName} type="text" required={true} />
                     {/* <input type="text" required={true} />
                     <input type="text" required={true} />
                     <input type="text" required={true} />
-                    <input type="text" required={true} />
                     <input type="number" required={true} /> */}
-                    <button onClick={handleClick}>Click To Submit</button>
+                    <button onClick={handleTest}>Click To Submit</button>
                 </form>
                 <div style={tempDivStyle}>
-                    {testState}
-                    {console.log(testState)}
+                    {/* {testState}
+                    {console.log(testState)} */}
                     {/* {exercises.map((exercise) => (
                         <div key={exercise.id}>
                             <h2>{exercise.name}</h2>

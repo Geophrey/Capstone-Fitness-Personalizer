@@ -67,3 +67,12 @@ const data = [
 ];
 
 export default data;
+
+// {
+//         "name": "sprints",
+//         "trainingType": ["Speed", "Strength", "Endurance"],
+//         "tutorial":
+//             "Run your specified distance at full or close to full speed to completion",
+//         "measurementUnits": ["Distance"],
+//         "intensity": 9,
+//     }
