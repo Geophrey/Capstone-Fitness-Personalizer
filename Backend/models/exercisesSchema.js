@@ -9,7 +9,6 @@ const exerciseSchema = mongoose.Schema({
     trainingType: {
         type: [String],
         required: true,
-        default: ["test"], //delete this when testing works
 
         // custom data validator to make sure the training type array only stores a maximum of 3 values
         validate: {
@@ -22,12 +21,10 @@ const exerciseSchema = mongoose.Schema({
     },
     tutorial: {
         type: String,
-        default: null, //delete this when testing works
         required: true,
     },
     measurementUnits: {
         type: [String],
-        default: ["test"], //delete this when testing works
         validate: {
             validator: (v) => Array.isArray(v) && v.length > 0,
             message:
@@ -38,7 +35,6 @@ const exerciseSchema = mongoose.Schema({
     },
     intensity: {
         type: Number,
-        default: null, //delete this when testing works
         required: true,
     },
     notes: {
