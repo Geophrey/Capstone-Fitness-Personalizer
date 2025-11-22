@@ -4,6 +4,7 @@ import data from "../../Backend/data/exerciseData";
 import type from "../../Backend/data/trainingTypes";
 import AddOneExerciseForm from "./components/AddOneExerciseForm";
 import { tempDivStyle, tempFormStyle } from "./styles/testStyles";
+import AddSeedExercises from "./components/AddSeedExercises";
 
 function App() {
     // const [exercises, setExercises] = useState(data);
@@ -27,28 +28,6 @@ function App() {
         getAllExercises();
     }, []);
 
-    async function addAllExercises(e) {
-        e.preventDefault();
-        console.log(`Adding exercise data to database...`);
-
-        try {
-            console.log(exercises);
-            const response = await fetch(`http://localhost:7777/addExercises`, {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
-
-            const result = await response.json();
-            console.log(result);
-            setExercises([...exercises, result]);
-        } catch (e) {
-            console.error(e);
-        }
-    }
-
     function handleShowAllExercises(e) {
         setTestState(
             exercises.map((exercise) => (
@@ -64,13 +43,8 @@ function App() {
     return (
         <>
             <div style={tempDivStyle}>
-                <AddOneExerciseForm
-                    exercises={exercises}
-                    setExercises={setExercises}
-                />
-                <button onClick={addAllExercises}>
-                    Click to Add All Exercises to Database
-                </button>
+                <AddOneExerciseForm exercises={exercises} setExercises={setExercises} />
+                <AddSeedExercises exercises={exercises} setExercises={setExercises} />
                 <button onClick={handleShowAllExercises}>Click to Show All Exercises</button>
                 <div style={tempDivStyle}>
                     {testState}
