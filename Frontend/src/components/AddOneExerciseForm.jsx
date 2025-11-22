@@ -1,9 +1,8 @@
 import { tempDivStyle, tempFormStyle } from "../styles/testStyles";
 import { useRef } from "react";
 
-export default function AddOneExerciseForm({exercises, setExercises}) {
+export default function AddOneExerciseForm({ exercises, setExercises }) {
     const oneNewExercise = useRef();
-    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -19,10 +18,11 @@ export default function AddOneExerciseForm({exercises, setExercises}) {
             intensity: parseInt(useableData.intensity),
         };
 
+        console.log("new exercise created");
         console.log(newExercise);
 
         try {
-            console.log(newExercise);
+            console.log("Adding new exercise to database...");
             const response = await fetch(`http://localhost:7777/addExercises`, {
                 method: "POST",
                 body: JSON.stringify(newExercise),
@@ -33,14 +33,13 @@ export default function AddOneExerciseForm({exercises, setExercises}) {
             const result = await response.json();
 
             console.log(result);
-
-            // exercises.push(result)
+            console.log("Adding new exercise to exercises state...");
             setExercises([...exercises, result]);
         } catch (e) {
             console.error(e);
         }
-        // console.log(exercises)
     }
+    console.log(`These are the exercises currently saved in state:`);
     console.log(exercises)
     return (
         <form

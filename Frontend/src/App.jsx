@@ -17,9 +17,8 @@ function App() {
                 const response = await fetch("http://localhost:7777/getExercises");
                 const data = await response.json();
 
-                console.log(data);
+                // console.log(data);
                 setExercises(data);
-                console.log(exercises);
             } catch (error) {
                 console.error("error found: " + error);
             }
@@ -36,7 +35,7 @@ function App() {
             console.log(exercises);
             const response = await fetch(`http://localhost:7777/addExercises`, {
                 method: "POST",
-                body: JSON.stringify(exercises),
+                body: JSON.stringify(data),
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -75,7 +74,7 @@ function App() {
                 <button onClick={handleShowAllExercises}>Click to Show All Exercises</button>
                 <div style={tempDivStyle}>
                     {testState}
-                    {console.log(testState)}
+                    {/* {console.log(testState)} */}
                     {/* {exercises.map((exercise) => (
                         <div key={exercise.id}>
                             <h2>{exercise.name}</h2>

@@ -1,5 +1,5 @@
-import unit from "./unitsOfMeasurement";
-import type from "./trainingTypes";
+import unit from "./unitsOfMeasurement.js";
+import type from "./trainingTypes.js";
 
 const data = [
     {
@@ -8,7 +8,7 @@ const data = [
         tutorial:
             "With hands in front of you and aligned with your chest, push forwards by moving them away from your body",
         measurementUnits: [unit.repetitions],
-        intensity: 6,
+        intensity: 6
     },
 
     {
@@ -17,7 +17,7 @@ const data = [
         tutorial:
             "Run your specified distance at full or close to full speed to completion",
         measurementUnits: [unit.distance],
-        intensity: 9,
+        intensity: 9
     },
 
     {
@@ -63,7 +63,7 @@ const data = [
             "Set up a box or box-like object with a flat, elevated surface to jump on. Start with bth feet on the ground, bend your knees about half to a quarter of the way down and launch yourself up and forwards to land on the box with both feet fully on top",
         measurementUnits: [unit.repetitions],
         intensity: 6
-    },
+    }
 ];
 
 export default data;
