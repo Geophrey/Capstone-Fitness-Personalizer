@@ -9,7 +9,7 @@ export default function AddSeedExercises({ exercises, setExercises }) {
 
         try {
             console.log(exercises);
-            const response = await fetch(`http://localhost:7777/addExercises`, {
+            const response = await fetch(`http://localhost:7777/add/Exercises`, {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {

@@ -1,4 +1,4 @@
-import { tempDivStyle, tempFormStyle } from "../styles/testStyles";
+import { tempDivStyle, tempFormStyle } from "../styles/testStyles.js";
 import { useRef } from "react";
 
 export default function AddOneExerciseForm({ exercises, setExercises }) {
@@ -23,7 +23,7 @@ export default function AddOneExerciseForm({ exercises, setExercises }) {
 
         try {
             console.log("Adding new exercise to database...");
-            const response = await fetch(`http://localhost:7777/addExercises`, {
+            const response = await fetch(`http://localhost:7777/add/Exercises`, {
                 method: "POST",
                 body: JSON.stringify(newExercise),
                 headers: {
