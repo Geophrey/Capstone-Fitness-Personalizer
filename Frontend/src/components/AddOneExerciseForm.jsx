@@ -1,8 +1,9 @@
 import { tempDivStyle, tempFormStyle } from "../styles/testStyles";
 import { useRef } from "react";
 
-export default function AddOneExerciseForm() {
+export default function AddOneExerciseForm({exercises, setExercises}) {
     const oneNewExercise = useRef();
+    
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -33,11 +34,14 @@ export default function AddOneExerciseForm() {
 
             console.log(result);
 
-            // setExercises([...exercises, result]);
+            // exercises.push(result)
+            setExercises([...exercises, result]);
         } catch (e) {
             console.error(e);
         }
+        // console.log(exercises)
     }
+    console.log(exercises)
     return (
         <form
             onSubmit={handleSubmit}

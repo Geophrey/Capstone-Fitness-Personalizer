@@ -23,8 +23,8 @@ app.post(`/addExercises`, async (req, res) => {
         console.log("Basic exercise data has been added to the database");
         console.log(newExercises)
 
-        const exercises = await Exercise.find({});
-        res.status(200).json(exercises);
+        // const exercises = await Exercise.find({});
+        res.status(200).json(newExercises);
     } catch (e) {
         console.error(e);
         res.status(400).json({ error: e.message });
