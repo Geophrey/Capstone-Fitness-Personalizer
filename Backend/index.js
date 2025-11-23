@@ -3,7 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import databaseConnect from "./database.js";
 import Exercise from "./models/exercisesSchema.js";
-import data from "./data/exerciseData.js";
+// import data from "./data/exerciseData.js";
 import postRouter from "./routes/postRoutes.js";
 
 const app = express();
@@ -19,34 +19,6 @@ app.get(`/`, (req, res) => {
 });
 
 app.use(`/add`, postRouter);
-
-//http://localhost:7777/addExercises
-// app.post(`/addExercises`, async (req, res) => {
-//     try {
-//         const newExercises = await Exercise.create(req.body);
-//         console.log("Basic exercise data has been added to the database");
-//         console.log(newExercises);
-
-//         res.status(200).json(newExercises);
-//     } catch (e) {
-//         console.error(e);
-//         res.status(400).json({ error: e.message });
-//     }
-// });
-
-// //http://localhost:7777/addSeedExercises
-// app.post(`/addSeedExercises`, async (req, res) => {
-//     try {
-//         const newExercises = await Exercise.create(data);
-//         console.log("Basic exercise data has been added to the database");
-//         console.log(newExercises)
-
-//         res.status(200).json(newExercises);
-//     } catch (e) {
-//         console.error(e);
-//         res.status(400).json({ error: e.message });
-//     }
-// });
 
 //http://localhost:7777/getExercises
 app.get(`/getExercises`, async (req, res) => {
