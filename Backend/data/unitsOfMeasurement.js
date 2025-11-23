@@ -10,4 +10,42 @@ const unit = {
     none: "none"
 };
 
+export const unit2 = [
+    {
+        name: "Repetitions"
+    },
+
+    {
+        name: "Sets"
+    },
+
+    {
+        name: "Distance"
+    },
+
+    {
+        name: "Rounds"
+    },
+
+    {
+        name: "Weight"
+    },
+
+    {
+        name: "Duration"
+    },
+
+    {
+        name: "Speed"
+    },
+
+    {
+        name: "Heart Rate"
+    },
+
+    {
+        name: "None"
+    }
+]
+
 export default unit;
