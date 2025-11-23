@@ -1,6 +1,7 @@
 import express from "express";
 import Exercise from "../models/exercisesSchema.js";
 import Training from "../models/trainingTypeSchema.js";
+import Units from "../models/unitsOfMeasurementSchema.js";
 
 const router = express.Router();
 
@@ -32,6 +33,20 @@ router.post(`/trainingTypes`, async (req, res) => {
         res.status(200).json(newTrainingType);
     } catch (e) {
         console.error(e);
+        res.status(400).json({ error: e.message });
+    }
+});
+
+//http://localhost:7777/add/unitsOfMeasurement
+//Adds units of measurement to the database
+router.post(`/unitsOfMeasurement`, async (req, res) => {
+    try {
+        const newUnit = await Units.create(req.body);
+        console.log("Unit of Measurement data has been added to the database");
+        console.log(newUnit);
+
+        res.status(200).json(newUnit);
+    } catch (e) {
         res.status(400).json({ error: e.message });
     }
 });
