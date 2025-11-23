@@ -35,7 +35,7 @@ export const type2 = [
     },
 
     {
-        name: "Felxibility",
+        name: "Flexibility",
     },
 
     {

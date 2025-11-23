@@ -10,7 +10,7 @@ const unit = {
     none: "none"
 };
 
-export const unit2 = [
+export const units2 = [
     {
         name: "Repetitions"
     },

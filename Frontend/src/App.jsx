@@ -9,6 +9,8 @@ import AddSeedExercises from "./components/AddSeedExercises";
 function App() {
     // const [exercises, setExercises] = useState(data);
     const [exercises, setExercises] = useState([]);
+    const [trainingTypes, setTrainingTypes] = useState([]);
+    const [units, setUnits] = useState([]);
     // const oneNewExercise = useRef();
     const [testState, setTestState] = useState();
 
