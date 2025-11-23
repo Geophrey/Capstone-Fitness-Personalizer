@@ -10,4 +10,4 @@ const unitsOfMeasurementSchema = mongoose.Schema({
 
 const Units = mongoose.model("Units", unitsOfMeasurementSchema);
 
-export default Training;
+export default Units;
