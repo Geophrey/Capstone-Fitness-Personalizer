@@ -8,14 +8,16 @@ import AddSeedExercises from "./components/AddSeedData";
 import TrainingTypeSelection from "./components/TrainingTypeSelection";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
+import NavBar from "./components/NavBar";
 
 function App() {
     // const [exercises, setExercises] = useState(data);
+    // const oneNewExercise = useRef();
     const [exercises, setExercises] = useState([]);
     const [trainingTypes, setTrainingTypes] = useState([]);
     const [units, setUnits] = useState([]);
-    // const oneNewExercise = useRef();
     const [testState, setTestState] = useState();
+    const [url, setUrl] = useState()
 
     useEffect(() => {
         async function getAllExercises() {
@@ -49,6 +51,7 @@ function App() {
 
     return (
         <div>
+            <NavBar />
             <Routes>
                 {/* http://localhost:5173/homepage */}
                 <Route path="/homepage" element={<Homepage />} />
