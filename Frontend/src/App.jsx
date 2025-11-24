@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, createContext, useRef } from "react";
 import mockData from "../../Backend/data/exerciseMockData";
 import data from "../../Backend/data/exerciseData";
 import type from "../../Backend/data/trainingTypes";
@@ -11,6 +11,8 @@ import Homepage from "./components/Homepage";
 import NavBar from "./components/NavBar";
 import Calendar from "./components/Calendar";
 import YourExercises from "./components/YourExercises";
+
+export const ExerciseData = createContext();
 
 function App() {
     // const [exercises, setExercises] = useState(data);
@@ -51,40 +53,41 @@ function App() {
     }
 
     return (
-        <div>
-            <NavBar />
-            <Routes>
-                {/* http://localhost:5173/homepage */}
-                <Route path="/homepage" element={<Homepage />} />
-                {/* http://localhost:5173/calendar */}
-                <Route path="/calendar" element={<Calendar />} />
-                {/* http://localhost:5173/exercises */}
-                <Route path="/exercises" element={<YourExercises />} />
-                {/* http://localhost:5173/addOneExercise */}
-                <Route
-                    path="/addOneExercise"
-                    element={
-                        <AddOneExerciseForm
-                            exercises={exercises}
-                            setExercises={setExercises}
-                        />
-                    }
-                />
-                {/* http://localhost:5173/addSeedExercises */}
-                <Route
-                    path="/addSeedExercises"
-                    element={
-                        <AddSeedExercises
-                            exercises={exercises}
-                            setExercises={setExercises}
-                            trainingTypes={trainingTypes}
-                            setTrainingTypes={setTrainingTypes}
-                            units={units}
-                            setUnits={setUnits}
-                        />
-                    }
-                />
-                {/* <div style={tempDivStyle}>NavBar</div>
+        <ExerciseData.Provider value={{exercises, setExercises}}>
+            <div>
+                <NavBar />
+                <Routes>
+                    {/* http://localhost:5173/homepage */}
+                    <Route path="/homepage" element={<Homepage />} />
+                    {/* http://localhost:5173/calendar */}
+                    <Route path="/calendar" element={<Calendar />} />
+                    {/* http://localhost:5173/exercises */}
+                    <Route path="/exercises" element={<YourExercises />} />
+                    {/* http://localhost:5173/addOneExercise */}
+                    <Route
+                        path="/addOneExercise"
+                        element={
+                            <AddOneExerciseForm
+                                exercises={exercises}
+                                setExercises={setExercises}
+                            />
+                        }
+                    />
+                    {/* http://localhost:5173/addSeedExercises */}
+                    <Route
+                        path="/addSeedExercises"
+                        element={
+                            <AddSeedExercises
+                                exercises={exercises}
+                                setExercises={setExercises}
+                                trainingTypes={trainingTypes}
+                                setTrainingTypes={setTrainingTypes}
+                                units={units}
+                                setUnits={setUnits}
+                            />
+                        }
+                    />
+                    {/* <div style={tempDivStyle}>NavBar</div>
                 <div style={tempDivStyle}>
                     <AddOneExerciseForm
                         exercises={exercises}
@@ -103,8 +106,9 @@ function App() {
                 </button>
                 </div>
                 <TrainingTypeSelection trainingTypes={trainingTypes} setTrainingTypes={setTrainingTypes}/> */}
-            </Routes>
-        </div>
+                </Routes>
+            </div>
+        </ExerciseData.Provider>
     );
 }
 // exercises.map((ex) => {

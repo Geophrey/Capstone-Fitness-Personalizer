@@ -5,6 +5,7 @@ import databaseConnect from "./database.js";
 import Exercise from "./models/exercisesSchema.js";
 // import data from "./data/exerciseData.js";
 import postRouter from "./routes/postRoutes.js";
+import getRouter from "./routes/getRoutes.js";
 
 const app = express();
 
@@ -19,18 +20,19 @@ app.get(`/`, (req, res) => {
 });
 
 app.use(`/add`, postRouter);
+app.use(`/get`, getRouter);
 
 //http://localhost:7777/getExercises
-app.get(`/getExercises`, async (req, res) => {
-    try {
-        const exercises = await Exercise.find({});
-        res.status(200).json(exercises);
-    } catch (e) {
-        console.log(e);
-        console.error(e);
-        res.status(400).json({ error: e.message });
-    }
-});
+// app.get(`/getExercises`, async (req, res) => {
+//     try {
+//         const exercises = await Exercise.find({});
+//         res.status(200).json(exercises);
+//     } catch (e) {
+//         console.log(e);
+//         console.error(e);
+//         res.status(400).json({ error: e.message });
+//     }
+// });
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
