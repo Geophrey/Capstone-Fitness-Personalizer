@@ -39,8 +39,8 @@ export default function AddOneExerciseForm({ exercises, setExercises }) {
             console.error(e);
         }
     }
-    console.log(`These are the exercises currently saved in state:`);
-    console.log(exercises);
+    // console.log(`These are the exercises currently saved in state:`);
+    // console.log(exercises);
     return (
         <form
             onSubmit={handleSubmit}

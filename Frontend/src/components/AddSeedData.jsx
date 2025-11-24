@@ -5,7 +5,7 @@ import { tempDivStyle, tempFormStyle } from "../styles/testStyles";
 import { useRef } from "react";
 
 export default function AddSeedData({ exercises, setExercises, trainingTypes, setTrainingTypes, units, setUnits }) {
-    async function addAllExercises(e) {
+    async function AddSeedData(e) {
         e.preventDefault();
         console.log(`Adding seed data to database...`);
 
@@ -40,9 +40,11 @@ export default function AddSeedData({ exercises, setExercises, trainingTypes, se
             });
             const unitsResult = await unitsResponse.json();
 
-            console.log(exerciseResult);
-            console.log(tTypeResult);
-            console.log(unitsResult);
+            console.log("seed data has been added to database")
+            
+            // console.log(exerciseResult);
+            // console.log(tTypeResult);
+            // console.log(unitsResult);
 
             setExercises([...exercises, exerciseResult]);
             setTrainingTypes([...trainingTypes, tTypeResult]);
@@ -51,16 +53,16 @@ export default function AddSeedData({ exercises, setExercises, trainingTypes, se
             console.error(e);
         }
     }
-    console.log(`These are the training types saved in state:`);
-    console.log(trainingTypes);
-    console.log(`These are the units of measurement saved in state:`);
-    console.log(units);
-    console.log(`These are the exercises currently saved in state:`);
-    console.log(exercises);
+    // console.log(`These are the training types saved in state:`);
+    // console.log(trainingTypes);
+    // console.log(`These are the units of measurement saved in state:`);
+    // console.log(units);
+    // console.log(`These are the exercises currently saved in state:`);
+    // console.log(exercises);
     return (
         <>
-            <button onClick={addAllExercises}>
-                Click to Add All Exercises to Database
+            <button onClick={AddSeedData}>
+                Click to Add Seed Data to Database
             </button>
         </>
     );
