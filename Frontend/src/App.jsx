@@ -50,7 +50,9 @@ function App() {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<Homepage />} />
+                {/* http://localhost:5173/homepage */}
+                <Route path="/homepage" element={<Homepage />} />
+                {/* http://localhost:5173/addOneExercise */}
                 <Route
                     path="/addOneExercise"
                     element={
@@ -60,6 +62,7 @@ function App() {
                         />
                     }
                 />
+                {/* http://localhost:5173/addSeedExercises */}
                 <Route
                     path="/addSeedExercises"
                     element={
