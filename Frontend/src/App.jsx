@@ -9,6 +9,7 @@ import TrainingTypeSelection from "./components/TrainingTypeSelection";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import NavBar from "./components/NavBar";
+import Calendar from "./components/Calendar";
 
 function App() {
     // const [exercises, setExercises] = useState(data);
@@ -17,7 +18,7 @@ function App() {
     const [trainingTypes, setTrainingTypes] = useState([]);
     const [units, setUnits] = useState([]);
     const [testState, setTestState] = useState();
-    const [url, setUrl] = useState()
+    const [url, setUrl] = useState();
 
     useEffect(() => {
         async function getAllExercises() {
@@ -55,6 +56,8 @@ function App() {
             <Routes>
                 {/* http://localhost:5173/homepage */}
                 <Route path="/homepage" element={<Homepage />} />
+                {/* http://localhost:5173/calendar */}
+                <Route path="/calendar" element={<Calendar />} />
                 {/* http://localhost:5173/addOneExercise */}
                 <Route
                     path="/addOneExercise"
