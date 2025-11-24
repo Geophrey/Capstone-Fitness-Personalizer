@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { ExerciseData } from "../App";
+import ExercisesList from "./ExercisesList";
 
 export default function YourExercises() {
     const spanStyle = {
@@ -44,9 +45,7 @@ export default function YourExercises() {
                 <div>here</div>
             </span>
             <span style={spanStyle} className="exerciseSearch">
-                <div>search and</div>
-                <div>simple view section</div>
-                <div>for exercises here</div>
+                <ExercisesList exerciseList={allExercises} />
             </span>
             <span style={spanStyle} className="editOptions">
                 <div>add, edit, or delete</div>

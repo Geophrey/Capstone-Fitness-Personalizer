@@ -26,7 +26,7 @@ function App() {
         async function getAllExercises() {
             try {
                 const response = await fetch(
-                    "http://localhost:7777/getExercises"
+                    "http://localhost:7777/get/Exercises"
                 );
                 const data = await response.json();
 
