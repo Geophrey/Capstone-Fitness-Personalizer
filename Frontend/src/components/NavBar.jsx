@@ -1,33 +1,33 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
     return (
         <>
             <header className="navbar">
                 <Link to="/homepage">
-                <p>Home</p>
+                    <button>Home</button>
                 </Link>
 
                 <Link to="/calendar">
-                <p>Your Calendar</p>
+                    <button>Your Calendar</button>
                 </Link>
 
                 <Link to="/exercises">
-                <p>Your Exercises</p>
+                    <button>Your Exercises</button>
                 </Link>
 
                 <Link to="/about">
-                <p>About</p>
+                    <button>About</button>
                 </Link>
 
                 <Link to="/addOneExercise">
-                <p>Add an Exercise</p>
+                    <button>Add an Exercise</button>
                 </Link>
 
                 <Link to="/addSeedExercises">
-                <p>Load Seeds</p>
+                    <button>Load Seeds</button>
                 </Link>
             </header>
         </>
-    )
+    );
 }

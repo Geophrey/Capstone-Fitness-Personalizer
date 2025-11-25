@@ -5,19 +5,57 @@ export default function ExercisesList({ exerciseList, handleClick }) {
     console.log(exerciseList);
 
     const [searchMethod, setSearchMethod] = useState();
-    const [search, setSearch] = useState();
+    let [search, setSearch] = useState();
+    const [searchList, setSearchList] = useState(exerciseList);
+
+    // let searchList = [];
 
     function handleChange(e) {
         if (e.target.tagName === "SELECT") {
             //to set the search method
-            console.log(`Seach method set to ${e.target.value}`)
+            console.log(`Search method set to ${e.target.value}`);
             setSearchMethod(e.target.value);
         } else {
             //to set the textbox search value
-            console.log(`Seach value set to ${e.target.value}`)
+            console.log(`Search value set to ${e.target.value}`);
             setSearch(e.target.value);
         }
+        exerciseSearch(searchMethod, search);
     }
+
+    function exerciseSearch(searchMethod, search) {
+        setSearchList(
+            exerciseList.filter((exLI) => {
+                switch (searchMethod) {
+                    case "name":
+                        console.log("search method is name");
+                        return exLI.name.includes(search);
+
+                    case "intensity":
+                        console.log("search method is intensity");
+                        return exLI.intensity == search;
+
+                    case "trainingType":
+                        console.log("search method is type");
+                        return exLI.trainingType.some((type) =>
+                            type.includes(search)
+                        );
+
+                    case "unit":
+                        console.log("search method is unit");
+                        return exLI.measurementUnits.some((units) =>
+                            units.includes(search)
+                        );
+
+                    default:
+                        console.log("search method is name");
+                        return exLI.name.includes(search);
+                }
+            })
+        );
+    }
+
+    console.log(searchList);
 
     return (
         <div className="listAndSearch">
@@ -39,10 +77,10 @@ export default function ExercisesList({ exerciseList, handleClick }) {
                 />
             </span>
             <div className="list">
-                {exerciseList.map((exL) => (
+                {searchList.map((exLI) => (
                     <ExerciseListItem
-                        key={exL._id}
-                        exListItem={exL}
+                        key={exLI._id}
+                        exListItem={exLI}
                         onClick={handleClick}
                     />
                 ))}

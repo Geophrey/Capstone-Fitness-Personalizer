@@ -11,6 +11,8 @@ import Homepage from "./components/Homepage";
 import NavBar from "./components/NavBar";
 import Calendar from "./components/Calendar";
 import YourExercises from "./components/YourExercises";
+import "./styles/AppStyle.css"
+
 
 export const ExerciseData = createContext();
 
@@ -54,7 +56,7 @@ function App() {
 
     return (
         <ExerciseData.Provider value={{exercises, setExercises}}>
-            <div>
+            <div className="mainPage">
                 <NavBar />
                 <Routes>
                     {/* http://localhost:5173/homepage */}

@@ -1,12 +1,16 @@
 export default function ExerciseListItem({ exListItem }) {
+    const tempStyle = {
+        border: "1px solid black"
+    }
     return (
-        <div className="item">
+        <div className="item" style={tempStyle}>
             <div className="name">
-                <p>{exListItem.name}</p>
+                <p><b>{exListItem.name}</b></p>
+                <hr />
             </div>
             <div className="trainingTypes">
                 {exListItem.trainingType.map((tType) => (
-                    <p key={tType}>{tType}</p>
+                    <span key={tType}> {tType} </span>
                 ))}
             </div>
         </div>
