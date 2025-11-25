@@ -1,4 +1,4 @@
-/* universal page styling */
+/***************************** universal page styling *****************************/
 
 html {
     height: 100vh;
@@ -12,7 +12,7 @@ html {
     height: 100%;
 }
 
-/* navbar styling */
+/***************************** navbar styling *****************************/
 
 .navbar {
     background-color: #788b4b;
@@ -25,7 +25,7 @@ html {
 }
 
 .navbar button {
-    width: 110px;
+    width: 90px;
     height: 55px;
     padding: 5px;
     border-radius: 8px;
@@ -38,7 +38,7 @@ html {
     border: 4px dotted #2dc653;
 }
 
-/* homepage styling */
+/***************************** homepage styling *****************************/
 
 .homepage {
     border: 2px solid #091a17;
@@ -49,4 +49,62 @@ html {
     justify-self: center;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/***************************** calendar styling *****************************/
+
+.calendar {
+    border: 2px solid #091a17;
+    background-color: #236359;
+    margin-top: 35px;
+    height: 450px;
+    overflow-y: auto;
+    width: 75%;
+    justify-self: center;
+    justify-items: center;
+    padding: 5px;
+}
+
+.calendar .header {
+    border-bottom: 3px solid #2dc653;
+    width: 100%;
+    height: 65px;
+    justify-items: center;
+    align-content: space-evenly;
+}
+
+.calendar .body {
+    /* margin-top: 100px; */
+    align-content: center;
+}
+
+th {
+    border: 2px solid #e9e50a77;
+    background-color: #18423c;
+    height: 40px;
+    width: 90px;
+    color: #a6d381
+}
+td {
+    border: 2px solid #058625;
+    background-color: #379789;
+    height: 40px;
+    width: 90px;
+    transition: border 0.1s;
+}
+
+td:hover {
+    border: 2px dotted #2ed658;
+}
+
+td button {
+    background-color: #37978985;
+    width: 100%;
+    height: 100%;
+    transition: "background-color" 0.1s, border 0.1s;
+}
+
+td button:active {
+    background-color: #1e5048d7;
+    border: 3px solid #581a68;
 }
