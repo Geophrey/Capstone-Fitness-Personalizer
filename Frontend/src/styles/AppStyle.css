@@ -1,7 +1,7 @@
 /* universal page styling */
 
 html {
-    height:100vh;
+    height: 100vh;
     background-color: #12332e;
     border: 5px solid rgb(160, 160, 160);
 }
@@ -9,7 +9,7 @@ html {
 .mainPage {
     background-color: #12332e;
     padding: 10px;
-    height:100%;
+    height: 100%;
 }
 
 /* navbar styling */
@@ -21,7 +21,7 @@ html {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 10px;
-    padding: 10px 10px
+    padding: 10px 10px;
 }
 
 .navbar button {
@@ -30,10 +30,23 @@ html {
     padding: 5px;
     border-radius: 8px;
     border: 2px solid #000000be;
-    transition: border .10s;
+    transition: border 0.1s;
 }
 
 .navbar button:hover {
     background-color: #97acb4;
-    border: 4px dotted #2DC653;
+    border: 4px dotted #2dc653;
+}
+
+/* homepage styling */
+
+.homepage {
+    border: 2px solid #091a17;
+    background-color: #236359;
+    height: 500px;
+    overflow-y: auto;
+    width: 75%;
+    justify-self: center;
+    padding-left: 10px;
+    padding-right: 10px;
 }

@@ -3,7 +3,7 @@ export default function Homepage() {
         <div className="homepage">
             <section className="greeting">
                 <h1>Welcome, Dude!</h1>
-                <h2>Heres your workout for the day:</h2>
+                <h2>Heres your most upcoming workout:</h2>
             </section>
             <section className="workouts">
                 <div className="workout">
@@ -29,13 +29,6 @@ export default function Homepage() {
                     <h5>Notes: use straps only if you can't complete the reps without them</h5>
                 </div>
             </section>
-            <ul>
-                <li>thing 1</li>
-                <li>thing 2</li>
-                <li>thing 3</li>
-                <li>thing 4</li>
-                <li>thing 5</li>
-            </ul>
         </div>
     );
 }
