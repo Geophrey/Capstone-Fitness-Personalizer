@@ -1,0 +1,3 @@
+Fitness Personalizer
+
+This is a workout planner + exercise reviewing application that would let the user create workouts, schedule them on a calendar, conceptually edit their exercises, rate their exercises and review their workouts with information. This app will allow the user more creative freedom on how they’ll structure a workout as well as subtly teach the user how they could better construct their workouts. This app is based off how I've constructed workouts
